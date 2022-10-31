@@ -6,7 +6,7 @@ const users = [
   {
     id: '5e86809283e28b96d2d38537',
     avatar: '/static/mock-images/avatars/avatar-anika_visser.png',
-    email: 'demo@devias.io',
+    email: 'demo@melsoft.co.za',
     name: 'Anika Visser',
     password: 'Password123!',
     plan: 'Premium'

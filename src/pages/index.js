@@ -1,16 +1,30 @@
 import { useEffect } from 'react';
 import Head from 'next/head';
-import { Divider } from '@mui/material';
-import { MainLayout } from '../components/main-layout';
-import { HomeClients } from '../components/home/home-clients';
-import { HomeHero } from '../components/home/home-hero';
-import { HomeDevelopers } from '../components/home/home-developers';
-import { HomeDesigners } from '../components/home/home-designers';
-import { HomeFeatures } from '../components/home/home-features';
-import { HomeTestimonials } from '../components/home/home-testimonials';
+import NextLink from 'next/link';
+import { useRouter } from 'next/router';
+import { Box, Card, Container, Divider, Link, Typography } from '@mui/material';
+import { GuestGuard } from '../components/authentication/guest-guard';
+import { AuthBanner } from '../components/authentication/auth-banner';
+import { AmplifyLogin } from '../components/authentication/amplify-login';
+import { Auth0Login } from '../components/authentication/auth0-login';
+import { FirebaseLogin } from '../components/authentication/firebase-login';
+import { JWTLogin } from '../components/authentication/jwt-login';
+import { Logo } from '../components/logo';
+import { useAuth } from '../hooks/use-auth';
 import { gtm } from '../lib/gtm';
 
-const Home = () => {
+const platformIcons = {
+  Amplify: '/static/icons/amplify.svg',
+  Auth0: '/static/icons/auth0.svg',
+  Firebase: '/static/icons/firebase.svg',
+  JWT: '/static/icons/jwt.svg'
+};
+
+const Login = () => {
+  const router = useRouter();
+  const { platform } = useAuth();
+  const { disableGuard } = router.query;
+
   useEffect(() => {
     gtm.push({ event: 'page_view' });
   }, []);
@@ -19,28 +33,105 @@ const Home = () => {
     <>
       <Head>
         <title>
-          Material Kit Pro
+          Login | Material Kit Pro
         </title>
       </Head>
-      <main>
-        <HomeHero />
-        <Divider />
-        <HomeDevelopers />
-        <Divider />
-        <HomeDesigners />
-        <HomeTestimonials />
-        <HomeFeatures />
-        <Divider />
-        <HomeClients />
-      </main>
+      <Box
+        component="main"
+        sx={{
+          backgroundColor: 'background.default',
+          display: 'flex',
+          flexDirection: 'column',
+          minHeight: '100vh'
+        }}
+      >
+        <Container
+          maxWidth="sm"
+          sx={{
+            py: {
+              xs: '60px',
+              md: '120px'
+            }
+          }}
+        >
+  
+          <Card
+            elevation={16}
+            sx={{ p: 4 }}
+          >
+            <Box
+              sx={{
+                alignItems: 'center',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center'
+              }}
+            >
+              <NextLink
+                href="/"
+                passHref
+              >
+                <a>
+                  <Logo
+                    sx={{
+                      height: 40,
+                      width: 40
+                    }}
+                  />
+                </a>
+              </NextLink>
+              <Typography variant="h4">
+                Log in
+              </Typography>
+              <Typography
+                color="textSecondary"
+                sx={{ mt: 2 }}
+                variant="body2"
+              >
+                Sign in on the internal platform
+              </Typography>
+            </Box>
+            <Box
+              sx={{
+                flexGrow: 1,
+                mt: 3
+              }}
+            >
+              {platform === 'Amplify' && <AmplifyLogin />}
+              {platform === 'Auth0' && <Auth0Login />}
+              {platform === 'Firebase' && <FirebaseLogin />}
+              {platform === 'JWT' && <JWTLogin />}
+            </Box>
+            <Divider sx={{ my: 3 }} />
+          
+            {platform === 'Amplify' && (
+              <Box sx={{ mt: 1 }}>
+                <NextLink
+                  href={disableGuard
+                    ? `/authentication/password-recovery?disableGuard=${disableGuard}`
+                    : '/authentication/password-recovery'}
+                  passHref
+                >
+                  <Link
+                    color="textSecondary"
+                    variant="body2"
+                  >
+                    Forgot password
+                  </Link>
+                </NextLink>
+              </Box>
+            )}
+          </Card>
+        </Container>
+      </Box>
     </>
   );
 };
 
-Home.getLayout = (page) => (
-  <MainLayout>
+Login.getLayout = (page) => (
+  <GuestGuard>
     {page}
-  </MainLayout>
+  </GuestGuard>
 );
 
-export default Home;
+export default Login;

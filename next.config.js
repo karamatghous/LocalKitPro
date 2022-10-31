@@ -12,7 +12,7 @@ const config = {
   async redirects() {
     return [
       {
-        source: '/docs',
+        source: '/authentication',
         destination: '/docs/welcome',
         permanent: true
       }

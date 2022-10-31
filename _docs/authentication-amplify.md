@@ -121,7 +121,7 @@ const Home = () => {
   
   const handleLogin = () => {
     // Email/username and password
-    login('demo@devias.io', 'Password123!');
+    login('demo@melsoft.co.za', 'Password123!');
   };
 
   return (
