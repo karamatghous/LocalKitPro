@@ -1,126 +1,34 @@
-## [Material Kit - React](https://material-kit-react.devias.io/) [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)](https://twitter.com/intent/tweet?text=%F0%9F%9A%A8Devias%20Freebie%20Alert%20-%20An%20awesome%20ready-to-use%20register%20page%20made%20with%20%23material%20%23react%0D%0Ahttps%3A%2F%2Fdevias.io%20%23createreactapp%20%23devias%20%23material%20%23freebie%20%40devias-io)
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-![license](https://img.shields.io/badge/license-MIT-blue.svg)
+## Getting Started
 
-[![Material Kit - React](https://github.com/devias-io/material-kit-react/blob/main/public/static/thumbnail.png)](https://material-kit-react.devias.io/)
-
-> Free React Admin Dashboard made with [MUI's](https://mui.com/?ref=devias-io)
-> components, [React](https://reactjs.org/?ref=devias-io) and of
-> course [Next.js](https://github.com/vercel/next.js/?ref=devias-io) to boost your app development
-> process!
-
-## Demo
-
-- [Dashboard Page](https://material-kit-react.devias.io)
-- [Users Page](https://material-kit-react.devias.io/customers)
-- [Products Page](https://material-kit-react.devias.io/products)
-- [Register Page](https://material-kit-react.devias.io/register)
-- [Login Page](https://material-kit-react.devias.io/login)
-- [Account Page](https://material-kit-react.devias.io/account)
-- [Settings Page](https://material-kit-react.devias.io/settings)
-
-## Free Figma Community File
-
-- [Duplicate File](https://www.figma.com/community/file/1039837897183395483/Devias-Dashboard-Design-Library-Kit)
-
-## Upgrade to PRO Version
-
-We also have a pro version of this product which bundles even more pages and components if you want
-to save more time and design efforts :)
-
-| Free Version (this one)          | [Material Kit Pro - React](https://material-ui.com/store/items/devias-kit-pro/) |
-|----------------------------------| :----------------------------------------------------------- |
-| **9** Demo Pages                 | **40+** demo pages
-| ✔ Authentication with **Zalter** | ✔ Authentication with **Amplify**, **Auth0**, **JWT** and **Firebase**
-| -                                | ✔ Dark & light mode
-| -                                | ✔ TypeScript version - for Standard Plus and Extended license
-| -                                | ✔ Design files (sketch & figma) - for Standard Plus and Extended license
-| -                                | ✔ Complete users flows
-
-## Quick start
-
-- [Download from Github](https://github.com/devias-io/material-kit-react/archive/master.zip)
-  or [Download from Devias](https://devias.io/products/material-kit-react) or clone the
-  repo: `git clone https://github.com/devias-io/material-kit-react.git`
-
-- Make sure your Node.js and npm versions are up to date for `React 18`
-
-- Install dependencies: `npm install` or `yarn`
-
-- Start the server: `npm run dev` or `yarn dev`
-
-- Views are on: `localhost:3000`
-
-## Setup authentication (optional)
-
-1. Sign in on **Zalter Dashboard** (https://dashboard.zalter.com) and create your **Zalter project**.
-
-2. Open your project settings and activate **Email Magic Link** authentication.
-This authentication method requires `redirect URIs` setup, so while in development you need to add `http://localhost:3000/sign-in/confirm`.
-For production replace `localhost:3000` with your own domain.
-
-3. Copy `.env.example` file and rename it to `.env`
-
-4. Open `.env` file and enable the Zalter authentication, then set your own Zalter project ID.
+First, run the development server:
 
 ```bash
-NEXT_PUBLIC_ENABLE_ZALTER_AUTH="true"
-NEXT_PUBLIC_ZALTER_PROJECT_ID="<your-project-id>"
+npm run dev
+# or
+yarn dev
 ```
 
-For more information about Zalter Authentication access https://developer.zalter.com.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## File Structure
+You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
-Within the download you'll find the following directories and files:
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
 
-```
-material-kit-react
+The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-┌── .env.example
-├── .eslintrc.json
-├── .gitignore
-├── CHANGELOG.md
-├── LICENSE.md
-├── next.config.js
-├── package.json
-├── README.md
-├── public
-└── src
-	├── __mocks__
-	├── components
-	├── icons
-	├── lib
-	├── theme
-	├── utils
-	└── pages
-		├── 404.js
-		├── _app.js
-		├── _document.js
-		├── account.js
-		├── customers.js
-		├── index.js
-		├── index.js
-		├── products.js
-		├── register.js
-		└── settings.js
-		└── sign-in
-			├── confirm.js
-			└── index.js
-```
+## Learn More
 
-## Resources
+To learn more about Next.js, take a look at the following resources:
 
-- More freebies like this one: <https://devias.io>
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-## Reporting Issues:
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-- [Github Issues Page](https://github.com/devias-io/react-material-dashboard/issues?ref=devias-io)
+## Deploy on Vercel
 
-## License
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-- Licensed under MIT (https://github.com/devias-io/react-material-dashboard/blob/master/LICENSE.md)
-
-## Contact Us
-
-- Email Us: support@deviasio.zendesk.com
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

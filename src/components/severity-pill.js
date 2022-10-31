@@ -36,8 +36,7 @@ export const SeverityPill = (props) => {
   return (
     <SeverityPillRoot
       ownerState={ownerState}
-      {...other}
-    >
+      {...other}>
       {children}
     </SeverityPillRoot>
   );
