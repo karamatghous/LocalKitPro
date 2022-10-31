@@ -29,7 +29,7 @@ const orders = [
     createdAt: subMinutes(subSeconds(now, 23), 32).getTime(),
     currency: '$',
     customer: {
-      email: 'carson.darrin@devias.io',
+      email: 'carson.darrin@melsoft.co.za',
       name: 'Carson Darrin'
     },
     number: 'DEV-102',
@@ -42,7 +42,7 @@ const orders = [
     createdAt: subMinutes(subSeconds(now, 51), 36).getTime(),
     currency: '$',
     customer: {
-      email: 'fran.perez@devias.io',
+      email: 'fran.perez@melsoft.co.za',
       name: 'Fran Perez'
     },
     number: 'DEV-101',
@@ -55,7 +55,7 @@ const orders = [
     createdAt: subMinutes(subSeconds(now, 55), 38).getTime(),
     currency: '$',
     customer: {
-      email: 'jie.yan.song@devias.io',
+      email: 'jie.yan.song@melsoft.co.za',
       name: 'Jie Yan Song'
     },
     number: 'DEV-100',
@@ -68,7 +68,7 @@ const orders = [
     createdAt: subMinutes(subSeconds(now, 3), 40).getTime(),
     currency: '$',
     customer: {
-      email: 'clarke.gillebert@devias.io',
+      email: 'clarke.gillebert@melsoft.co.za',
       name: 'Clarke Gillebert'
     },
     number: 'DEV-99',
@@ -81,7 +81,7 @@ const orders = [
     createdAt: subMinutes(subSeconds(now, 32), 45).getTime(),
     currency: '$',
     customer: {
-      email: 'miron.vitold@devias.io',
+      email: 'miron.vitold@melsoft.co.za',
       name: 'Miron Vitold'
     },
     number: 'DEV-98',

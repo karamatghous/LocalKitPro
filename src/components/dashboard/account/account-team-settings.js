@@ -114,7 +114,7 @@ export const AccountTeamSettings = () => (
                     color="textSecondary"
                     variant="body2"
                   >
-                    cao.yu@devias.io
+                    cao.yu@melsoft.co.za
                   </Typography>
                 </div>
               </Box>
@@ -155,7 +155,7 @@ export const AccountTeamSettings = () => (
                     variant="body2"
                     color="textSecondary"
                   >
-                    cao.yu@devias.io
+                    cao.yu@melsoft.co.za
                   </Typography>
                 </div>
               </Box>

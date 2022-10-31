@@ -147,7 +147,7 @@ export const DetailList8 = () => (
             <ListItemText
               primary={(
                 <Typography variant="subtitle2">
-                  katarina.smith@devias.io
+                  katarina.smith@melsoft.co.za
                 </Typography>
               )}
             />

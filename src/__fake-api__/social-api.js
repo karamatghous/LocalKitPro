@@ -13,7 +13,7 @@ class SocialApi {
       currentCity: 'Bucharest',
       currentJobCompany: 'Devias IO',
       currentJobTitle: 'Product Designer',
-      email: 'anika.visser@devias.io',
+      email: 'anika.visser@melsoft.co.za',
       name: 'Anika Visser',
       originCity: 'Rm. Valcea',
       previousJobCompany: 'Focus Aesthetic Dynamics',

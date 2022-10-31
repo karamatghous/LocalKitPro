@@ -14,7 +14,7 @@ class OrderApi {
           address2: 'House #25',
           city: 'San Diego',
           country: 'USA',
-          email: 'miron.vitold@devias.io',
+          email: 'miron.vitold@melsoft.co.za',
           name: 'Miron Vitold'
         },
         items: [
@@ -49,7 +49,7 @@ class OrderApi {
           address2: 'House #25',
           city: 'San Diego',
           country: 'USA',
-          email: 'miron.vitold@devias.io',
+          email: 'miron.vitold@melsoft.co.za',
           name: 'Miron Vitold'
         },
         items: [
@@ -84,7 +84,7 @@ class OrderApi {
           address2: 'House #25',
           city: 'San Diego',
           country: 'USA',
-          email: 'miron.vitold@devias.io',
+          email: 'miron.vitold@melsoft.co.za',
           name: 'Miron Vitold'
         },
         items: [
@@ -119,7 +119,7 @@ class OrderApi {
           address2: 'House #25',
           city: 'San Diego',
           country: 'USA',
-          email: 'miron.vitold@devias.io',
+          email: 'miron.vitold@melsoft.co.za',
           name: 'Miron Vitold'
         },
         items: [
@@ -154,7 +154,7 @@ class OrderApi {
           address2: 'House #25',
           city: 'San Diego',
           country: 'USA',
-          email: 'miron.vitold@devias.io',
+          email: 'miron.vitold@melsoft.co.za',
           name: 'Miron Vitold'
         },
         items: [
@@ -189,7 +189,7 @@ class OrderApi {
           address2: 'House #25',
           city: 'San Diego',
           country: 'USA',
-          email: 'miron.vitold@devias.io',
+          email: 'miron.vitold@melsoft.co.za',
           name: 'Miron Vitold'
         },
         items: [
@@ -224,7 +224,7 @@ class OrderApi {
           address2: 'House #25',
           city: 'San Diego',
           country: 'USA',
-          email: 'miron.vitold@devias.io',
+          email: 'miron.vitold@melsoft.co.za',
           name: 'Miron Vitold'
         },
         items: [
@@ -259,7 +259,7 @@ class OrderApi {
           address2: 'House #25',
           city: 'San Diego',
           country: 'USA',
-          email: 'miron.vitold@devias.io',
+          email: 'miron.vitold@melsoft.co.za',
           name: 'Miron Vitold'
         },
         items: [
@@ -294,7 +294,7 @@ class OrderApi {
           address2: 'House #25',
           city: 'San Diego',
           country: 'USA',
-          email: 'miron.vitold@devias.io',
+          email: 'miron.vitold@melsoft.co.za',
           name: 'Miron Vitold'
         },
         items: [
@@ -329,7 +329,7 @@ class OrderApi {
           address2: 'House #25',
           city: 'San Diego',
           country: 'USA',
-          email: 'miron.vitold@devias.io',
+          email: 'miron.vitold@melsoft.co.za',
           name: 'Miron Vitold'
         },
         items: [
@@ -371,7 +371,7 @@ class OrderApi {
         address2: 'House #25',
         city: 'San Diego',
         country: 'USA',
-        email: 'miron.vitold@devias.io',
+        email: 'miron.vitold@melsoft.co.za',
         name: 'Miron Vitold'
       },
       items: [

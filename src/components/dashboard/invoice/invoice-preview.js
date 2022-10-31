@@ -34,7 +34,7 @@ export const InvoicePreview = (props) => {
             <Grid item>
               <Logo />
               <Typography variant="subtitle2">
-                www.devias.io
+                www.melsoft.co.za
               </Typography>
             </Grid>
             <Grid item>
@@ -80,7 +80,7 @@ export const InvoicePreview = (props) => {
                   align="right"
                   variant="body2"
                 >
-                  accounts@devias.io
+                  accounts@melsoft.co.za
                   <br />
                   (+40) 652 3456 23
                 </Typography>

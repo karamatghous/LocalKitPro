@@ -113,7 +113,7 @@ const emails = [
     folder: 'inbox',
     from: {
       avatar: '/static/mock-images/avatars/avatar-marcus_finn.png',
-      email: 'marcus.finn@devias.io',
+      email: 'marcus.finn@melsoft.co.za',
       name: 'Marcus Finn'
     },
     isImportant: true,
@@ -136,7 +136,7 @@ Marcus Finn
     to: [
       {
         avatar: '/static/mock-images/avatars/avatar-anika_visser.png',
-        email: 'anika.visser@devias.io',
+        email: 'anika.visser@melsoft.co.za',
         name: 'Anika Visser'
       }
     ]
@@ -147,7 +147,7 @@ Marcus Finn
     folder: 'spam',
     from: {
       avatar: '/static/mock-images/avatars/avatar-miron_vitold.png',
-      email: 'miron.vitold@devias.io',
+      email: 'miron.vitold@melsoft.co.za',
       name: 'Miron Vitold'
     },
     isImportant: false,
@@ -161,7 +161,7 @@ Hey, nice projects! I really liked the one in react. What's your quote on kinda 
     to: [
       {
         avatar: '/static/mock-images/avatars/avatar-anika_visser.png',
-        email: 'anika.visser@devias.io',
+        email: 'anika.visser@melsoft.co.za',
         name: 'Anika Visser'
       }
     ]
@@ -172,7 +172,7 @@ Hey, nice projects! I really liked the one in react. What's your quote on kinda 
     folder: 'inbox',
     from: {
       avatar: '/static/mock-images/avatars/avatar-penjani_inyene.png',
-      email: 'penjani.inyene@devias.io',
+      email: 'penjani.inyene@melsoft.co.za',
       name: 'Penjani Inyene'
     },
     isImportant: false,
@@ -186,7 +186,7 @@ Dear Anika, Your flight is coming up soon. Please don’t forget to check in for
     to: [
       {
         avatar: '/static/mock-images/avatars/avatar-anika_visser.png',
-        email: 'anika.visser@devias.io',
+        email: 'anika.visser@melsoft.co.za',
         name: 'Anika Visser'
       }
     ]
@@ -197,7 +197,7 @@ Dear Anika, Your flight is coming up soon. Please don’t forget to check in for
     folder: 'trash',
     from: {
       avatar: '/static/mock-images/avatars/avatar-carson_darrin.png',
-      email: 'carson.darrin@devias.io',
+      email: 'carson.darrin@melsoft.co.za',
       name: 'Carson Darrin'
     },
     isImportant: false,
@@ -211,7 +211,7 @@ My market leading client has another fantastic opportunity for an experienced So
     to: [
       {
         avatar: '/static/mock-images/avatars/avatar-anika_visser.png',
-        email: 'anika.visser@devias.io',
+        email: 'anika.visser@melsoft.co.za',
         name: 'Anika Visser'
       }
     ]

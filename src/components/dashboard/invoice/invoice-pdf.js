@@ -97,11 +97,11 @@ export const InvoicePDF = (props) => {
         <View style={styles.header}>
           <View>
             <Image
-              source="/static/logo.jpg"
+              source="/static/logo.png"
               style={styles.brand}
             />
             <Text style={styles.h6}>
-              www.devias.io
+              www.melsoft.co.za
             </Text>
           </View>
           <View>
@@ -135,7 +135,7 @@ export const InvoicePDF = (props) => {
           </View>
           <View>
             <Text style={styles.body2}>
-              accounts@devias.io
+              accounts@melsoft.co.za
             </Text>
             <Text style={styles.body2}>
               (+40) 652 3456 23

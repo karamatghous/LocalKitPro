@@ -38,7 +38,7 @@ export const DetailList2 = () => (
                 color="textSecondary"
                 variant="body2"
               >
-                miron.vitold@devias.io
+                miron.vitold@melsoft.co.za
               </Typography>
               <SeverityPill color="success">
                 Email verified
