@@ -5,11 +5,6 @@ export const axiosClient = axios.create({
   headers: {
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "*",
-    // Accept: "application/json, text/plain",
-    // "Access-Control-Allow-Methods": "GET, POST, OPTIONS, PUT, PATCH, DELETE",
-    // "Access-Control-Allow-Headers":
-    //   "x-access-token, Origin, X-Requested-With, Content-Type, Accept",
-    // Accept: "text/plain",
     "Access-Control-Allow-Origin": "http://localhost:3000",
     "Access-Control-Allow-Credentials": "true",
     Origin: "http://localhost:3000",

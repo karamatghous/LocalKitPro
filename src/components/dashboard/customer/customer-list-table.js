@@ -34,6 +34,7 @@ export const CustomerListTable = (props) => {
     ...other
   } = props;
   const [selectedCustomers, setSelectedCustomers] = useState([]);
+  const [data, setData] = useState([]);
 
   // Reset selected customers when customers change
   useEffect(
@@ -51,6 +52,7 @@ export const CustomerListTable = (props) => {
     await axiosClient
       .get("User/getUsersForCompany?companyId=1", {})
       .then((res) => {
+        setData(res.data);
         console.log(res, "Api response");
       })
       .catch((err) => {
@@ -127,7 +129,6 @@ export const CustomerListTable = (props) => {
               const isCustomerSelected = selectedCustomers.includes(
                 customer.id
               );
-
               return (
                 <TableRow hover key={customer.id} selected={isCustomerSelected}>
                   <TableCell padding="checkbox">

@@ -106,19 +106,16 @@ export const AuthProvider = (props) => {
 
     initialize();
   }, []);
-
   const login = async (email, password) => {
-    // console.log(email, email, "email password in redux");
-    // const userLoginData = await axiosClient.post("Authenticate/login", {
-    const userLoginData = await axiosClient.post("login", {
-      username: "userone@gmail.com",
-      password: "Demo_1234",
-      // username: "kminchelle",
-      // password: "0lelplR",
+    const userLoginData = await axiosClient.post("Authenticate/login", {
+      username: email,
+      password: password,
     });
 
     console.log(userLoginData, "login data in redux");
-    const { accessToken } = await authApi.login({ email, password });
+    console.log(userLoginData.data.token, "login data in redux");
+    // const { accessToken } = await authApi.login({ email, password });
+    const { accessToken } = userLoginData.data.token;
     // const user = await authApi.me({ accessToken });
     localStorage.setItem("accessToken", accessToken);
 
@@ -129,7 +126,6 @@ export const AuthProvider = (props) => {
       },
     });
   };
-
   const logout = async () => {
     localStorage.removeItem("accessToken");
     dispatch({ type: ActionType.LOGOUT });
