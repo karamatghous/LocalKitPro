@@ -7,42 +7,36 @@ import {
   Divider,
   Link,
   TextField,
-  Typography
-} from '@mui/material';
+  Typography,
+} from "@mui/material";
 
 export const Form15 = () => (
   <Box
     sx={{
-      backgroundColor: 'background.default',
-      minHeight: '100%',
-      p: 3
+      backgroundColor: "background.default",
+      minHeight: "100%",
+      p: 3,
     }}
   >
     <Container maxWidth="sm">
       <Card>
         <CardContent
           sx={{
-            display: 'flex',
-            flexDirection: 'column',
+            display: "flex",
+            flexDirection: "column",
             minHeight: 400,
-            p: 4
+            p: 4,
           }}
         >
           <Box
             sx={{
-              display: 'flex',
-              justifyContent: 'space-between'
+              display: "flex",
+              justifyContent: "space-between",
             }}
           >
             <div>
-              <Typography variant="h4">
-                Log in
-              </Typography>
-              <Typography
-                color="textSecondary"
-                sx={{ mt: 1 }}
-                variant="body2"
-              >
+              <Typography variant="h4">Log in</Typography>
+              <Typography color="textSecondary" sx={{ mt: 1 }} variant="body2">
                 Log in on the internal platform
               </Typography>
             </div>
@@ -50,15 +44,15 @@ export const Form15 = () => (
               alt="Amplify"
               src="/static/icons/amplify.svg"
               style={{
-                maxWidth: '53.62px',
-                width: '100%'
+                maxWidth: "53.62px",
+                width: "100%",
               }}
             />
           </Box>
           <Box
             sx={{
               flexGrow: 1,
-              mt: 3
+              mt: 3,
             }}
           >
             <form onSubmit={(event) => event.preventDefault()}>
@@ -89,11 +83,7 @@ export const Form15 = () => (
             </form>
           </Box>
           <Divider sx={{ my: 3 }} />
-          <Link
-            color="textSecondary"
-            href="#"
-            variant="body2"
-          >
+          <Link color="textSecondary" href="#" variant="body2">
             Create new account
           </Link>
         </CardContent>

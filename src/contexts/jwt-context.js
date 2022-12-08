@@ -1,19 +1,20 @@
-import { createContext, useEffect, useReducer } from 'react';
-import PropTypes from 'prop-types';
-import { authApi } from '../__fake-api__/auth-api';
+import { createContext, useEffect, useReducer } from "react";
+import PropTypes from "prop-types";
+import { authApi } from "../__fake-api__/auth-api";
+import { axiosClient } from "../api/config";
 
 var ActionType;
 (function (ActionType) {
-  ActionType['INITIALIZE'] = 'INITIALIZE';
-  ActionType['LOGIN'] = 'LOGIN';
-  ActionType['LOGOUT'] = 'LOGOUT';
-  ActionType['REGISTER'] = 'REGISTER';
+  ActionType["INITIALIZE"] = "INITIALIZE";
+  ActionType["LOGIN"] = "LOGIN";
+  ActionType["LOGOUT"] = "LOGOUT";
+  ActionType["REGISTER"] = "REGISTER";
 })(ActionType || (ActionType = {}));
 
 const initialState = {
   isAuthenticated: false,
   isInitialized: false,
-  user: null
+  user: null,
 };
 
 const handlers = {
@@ -24,7 +25,7 @@ const handlers = {
       ...state,
       isAuthenticated,
       isInitialized: true,
-      user
+      user,
     };
   },
   LOGIN: (state, action) => {
@@ -33,13 +34,13 @@ const handlers = {
     return {
       ...state,
       isAuthenticated: true,
-      user
+      user,
     };
   },
   LOGOUT: (state) => ({
     ...state,
     isAuthenticated: false,
-    user: null
+    user: null,
   }),
   REGISTER: (state, action) => {
     const { user } = action.payload;
@@ -47,21 +48,20 @@ const handlers = {
     return {
       ...state,
       isAuthenticated: true,
-      user
+      user,
     };
-  }
+  },
 };
 
-const reducer = (state, action) => (handlers[action.type]
-  ? handlers[action.type](state, action)
-  : state);
+const reducer = (state, action) =>
+  handlers[action.type] ? handlers[action.type](state, action) : state;
 
 export const AuthContext = createContext({
   ...initialState,
-  platform: 'JWT',
+  platform: "JWT",
   login: () => Promise.resolve(),
   logout: () => Promise.resolve(),
-  register: () => Promise.resolve()
+  register: () => Promise.resolve(),
 });
 
 export const AuthProvider = (props) => {
@@ -71,7 +71,7 @@ export const AuthProvider = (props) => {
   useEffect(() => {
     const initialize = async () => {
       try {
-        const accessToken = globalThis.localStorage.getItem('accessToken');
+        const accessToken = globalThis.localStorage.getItem("accessToken");
 
         if (accessToken) {
           const user = await authApi.me({ accessToken });
@@ -80,16 +80,16 @@ export const AuthProvider = (props) => {
             type: ActionType.INITIALIZE,
             payload: {
               isAuthenticated: true,
-              user
-            }
+              user,
+            },
           });
         } else {
           dispatch({
             type: ActionType.INITIALIZE,
             payload: {
               isAuthenticated: false,
-              user: null
-            }
+              user: null,
+            },
           });
         }
       } catch (err) {
@@ -98,8 +98,8 @@ export const AuthProvider = (props) => {
           type: ActionType.INITIALIZE,
           payload: {
             isAuthenticated: false,
-            user: null
-          }
+            user: null,
+          },
         });
       }
     };
@@ -108,21 +108,30 @@ export const AuthProvider = (props) => {
   }, []);
 
   const login = async (email, password) => {
-    const { accessToken } = await authApi.login({ email, password });
-    const user = await authApi.me({ accessToken });
+    console.log(email, email, "email password in redux");
+    const userLoginData = await axiosClient.post("Authenticate/login", {
+      // const userLoginData = await axiosClient.post("login", {
+      username: "userone@gmail.com",
+      password: "Demo_1234",
+      // username: "kminchelle",
+      // password: "0lelplR",
+    });
 
-    localStorage.setItem('accessToken', accessToken);
+    console.log(userLoginData, "login data in redux");
+    const { accessToken } = await authApi.login({ email, password });
+    // const user = await authApi.me({ accessToken });
+    localStorage.setItem("accessToken", accessToken);
 
     dispatch({
       type: ActionType.LOGIN,
       payload: {
-        user
-      }
+        user: userLoginData.data,
+      },
     });
   };
 
   const logout = async () => {
-    localStorage.removeItem('accessToken');
+    localStorage.removeItem("accessToken");
     dispatch({ type: ActionType.LOGOUT });
   };
 
@@ -130,13 +139,13 @@ export const AuthProvider = (props) => {
     const { accessToken } = await authApi.register({ email, name, password });
     const user = await authApi.me({ accessToken });
 
-    localStorage.setItem('accessToken', accessToken);
+    localStorage.setItem("accessToken", accessToken);
 
     dispatch({
       type: ActionType.REGISTER,
       payload: {
-        user
-      }
+        user,
+      },
     });
   };
 
@@ -144,10 +153,10 @@ export const AuthProvider = (props) => {
     <AuthContext.Provider
       value={{
         ...state,
-        platform: 'JWT',
+        platform: "JWT",
         login,
         logout,
-        register
+        register,
       }}
     >
       {children}
@@ -156,7 +165,7 @@ export const AuthProvider = (props) => {
 };
 
 AuthProvider.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 export const AuthConsumer = AuthContext.Consumer;

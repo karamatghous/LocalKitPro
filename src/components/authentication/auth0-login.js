@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import { useRouter } from 'next/router';
-import { Box, Button, FormHelperText } from '@mui/material';
-import { useAuth } from '../../hooks/use-auth';
-import { useMounted } from '../../hooks/use-mounted';
+import { useState } from "react";
+import { useRouter } from "next/router";
+import { Box, Button, FormHelperText } from "@mui/material";
+import { useAuth } from "../../hooks/use-auth";
+import { useMounted } from "../../hooks/use-mounted";
 
 export const Auth0Login = (props) => {
   const isMounted = useMounted();
@@ -13,7 +13,7 @@ export const Auth0Login = (props) => {
   const handleLogin = async () => {
     try {
       await loginWithRedirect({
-        returnUrl: router.query.returnUrl || '/dashboard'
+        returnUrl: router.query.returnUrl || "/dashboard",
       });
     } catch (err) {
       console.error(err);
@@ -28,21 +28,16 @@ export const Auth0Login = (props) => {
     <div {...props}>
       {error && (
         <Box sx={{ my: 3 }}>
-          <FormHelperText error>
-            {error}
-          </FormHelperText>
+          <FormHelperText error>{error}</FormHelperText>
         </Box>
       )}
       <Box
         sx={{
-          display: 'flex',
-          justifyContent: 'center'
+          display: "flex",
+          justifyContent: "center",
         }}
       >
-        <Button
-          onClick={handleLogin}
-          variant="contained"
-        >
+        <Button onClick={handleLogin} variant="contained">
           Log In
         </Button>
       </Box>

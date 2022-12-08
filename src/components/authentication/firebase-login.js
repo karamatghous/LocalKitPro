@@ -1,9 +1,17 @@
-import { useRouter } from 'next/router';
-import * as Yup from 'yup';
-import { useFormik } from 'formik';
-import { Alert, Box, Button, Divider, FormHelperText, TextField, Typography } from '@mui/material';
-import { useAuth } from '../../hooks/use-auth';
-import { useMounted } from '../../hooks/use-mounted';
+import { useRouter } from "next/router";
+import * as Yup from "yup";
+import { useFormik } from "formik";
+import {
+  Alert,
+  Box,
+  Button,
+  Divider,
+  FormHelperText,
+  TextField,
+  Typography,
+} from "@mui/material";
+import { useAuth } from "../../hooks/use-auth";
+import { useMounted } from "../../hooks/use-mounted";
 
 export const FirebaseLogin = (props) => {
   const isMounted = useMounted();
@@ -11,27 +19,23 @@ export const FirebaseLogin = (props) => {
   const { signInWithEmailAndPassword, signInWithGoogle } = useAuth();
   const formik = useFormik({
     initialValues: {
-      email: 'demo@melsoft.co.za',
-      password: 'demo@melsoft.co.za',
-      submit: null
+      email: "demo@melsoft.co.za",
+      password: "demo@melsoft.co.za",
+      submit: null,
     },
     validationSchema: Yup.object({
-      email: Yup
-        .string()
-        .email('Must be a valid email')
+      email: Yup.string()
+        .email("Must be a valid email")
         .max(255)
-        .required('Email is required'),
-      password: Yup
-        .string()
-        .max(255)
-        .required('Password is required')
+        .required("Email is required"),
+      password: Yup.string().max(255).required("Password is required"),
     }),
     onSubmit: async (values, helpers) => {
       try {
         await signInWithEmailAndPassword(values.email, values.password);
 
         if (isMounted()) {
-          const returnUrl = router.query.returnUrl || '/dashboard';
+          const returnUrl = router.query.returnUrl || "/dashboard";
           router.push(returnUrl).catch(console.error);
         }
       } catch (err) {
@@ -43,7 +47,7 @@ export const FirebaseLogin = (props) => {
           helpers.setSubmitting(false);
         }
       }
-    }
+    },
   });
 
   const handleGoogleClick = async () => {
@@ -51,7 +55,7 @@ export const FirebaseLogin = (props) => {
       await signInWithGoogle();
 
       if (isMounted()) {
-        const returnUrl = router.query.returnUrl || '/dashboard';
+        const returnUrl = router.query.returnUrl || "/dashboard";
         router.push(returnUrl).catch(console.error);
       }
     } catch (err) {
@@ -66,12 +70,12 @@ export const FirebaseLogin = (props) => {
         onClick={handleGoogleClick}
         size="large"
         sx={{
-          backgroundColor: 'common.white',
-          color: 'common.black',
-          '&:hover': {
-            backgroundColor: 'common.white',
-            color: 'common.black'
-          }
+          backgroundColor: "common.white",
+          color: "common.black",
+          "&:hover": {
+            backgroundColor: "common.white",
+            color: "common.black",
+          },
         }}
         variant="contained"
       >
@@ -85,29 +89,22 @@ export const FirebaseLogin = (props) => {
       </Button>
       <Box
         sx={{
-          alignItems: 'center',
-          display: 'flex',
-          mt: 2
+          alignItems: "center",
+          display: "flex",
+          mt: 2,
         }}
       >
         <Box sx={{ flexGrow: 1 }}>
           <Divider orientation="horizontal" />
         </Box>
-        <Typography
-          color="textSecondary"
-          sx={{ m: 2 }}
-          variant="body1"
-        >
+        <Typography color="textSecondary" sx={{ m: 2 }} variant="body1">
           OR
         </Typography>
         <Box sx={{ flexGrow: 1 }}>
           <Divider orientation="horizontal" />
         </Box>
       </Box>
-      <form
-        noValidate
-        onSubmit={formik.handleSubmit}
-      >
+      <form noValidate onSubmit={formik.handleSubmit}>
         <TextField
           error={Boolean(formik.touched.email && formik.errors.email)}
           fullWidth
@@ -134,9 +131,7 @@ export const FirebaseLogin = (props) => {
         />
         {formik.errors.submit && (
           <Box sx={{ mt: 3 }}>
-            <FormHelperText error>
-              {formik.errors.submit}
-            </FormHelperText>
+            <FormHelperText error>{formik.errors.submit}</FormHelperText>
           </Box>
         )}
         <Box sx={{ mt: 2 }}>
@@ -153,12 +148,7 @@ export const FirebaseLogin = (props) => {
         <Box sx={{ mt: 2 }}>
           <Alert severity="info">
             <div>
-              You can use
-              {' '}
-              <b>demo@melsoft.co.za</b>
-              {' '}
-              and password
-              {' '}
+              You can use <b>demo@melsoft.co.za</b> and password{" "}
               <b>Password123!</b>
             </div>
           </Alert>
