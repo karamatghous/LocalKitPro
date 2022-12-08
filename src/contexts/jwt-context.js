@@ -108,9 +108,9 @@ export const AuthProvider = (props) => {
   }, []);
 
   const login = async (email, password) => {
-    console.log(email, email, "email password in redux");
-    const userLoginData = await axiosClient.post("Authenticate/login", {
-      // const userLoginData = await axiosClient.post("login", {
+    // console.log(email, email, "email password in redux");
+    // const userLoginData = await axiosClient.post("Authenticate/login", {
+    const userLoginData = await axiosClient.post("login", {
       username: "userone@gmail.com",
       password: "Demo_1234",
       // username: "kminchelle",

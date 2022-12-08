@@ -21,6 +21,7 @@ import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right";
 import { PencilAlt as PencilAltIcon } from "../../../icons/pencil-alt";
 import { getInitials } from "../../../utils/get-initials";
 import { Scrollbar } from "../../scrollbar";
+import { axiosClient } from "../../../api/config";
 
 export const CustomerListTable = (props) => {
   const {
@@ -40,10 +41,22 @@ export const CustomerListTable = (props) => {
       if (selectedCustomers.length) {
         setSelectedCustomers([]);
       }
+      _getUsersForCompany();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [customers]
   );
+
+  const _getUsersForCompany = async () => {
+    await axiosClient
+      .get("User/getUsersForCompany?companyId=1", {})
+      .then((res) => {
+        console.log(res, "Api response");
+      })
+      .catch((err) => {
+        console.log(err, "error");
+      });
+  };
 
   const handleSelectAllCustomers = (event) => {
     setSelectedCustomers(
