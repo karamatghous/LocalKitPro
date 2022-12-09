@@ -12,9 +12,9 @@ export const AuthGuard = (props) => {
   useEffect(() => {
       if (!router.isReady) {
         return;
-      }
+    }
 
-      if (!auth.isAuthenticated) {
+    if (!auth.isAuthenticated) {
         router.push({
           pathname: '/authentication/login',
           query: { returnUrl: router.asPath }

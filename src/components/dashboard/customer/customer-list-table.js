@@ -17,11 +17,12 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
+
 import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right";
 import { PencilAlt as PencilAltIcon } from "../../../icons/pencil-alt";
 import { getInitials } from "../../../utils/get-initials";
 import { Scrollbar } from "../../scrollbar";
-import { axiosClient } from "../../../api/config";
+import { useSelector } from "react-redux";
 
 export const CustomerListTable = (props) => {
   const {
@@ -34,7 +35,8 @@ export const CustomerListTable = (props) => {
     ...other
   } = props;
   const [selectedCustomers, setSelectedCustomers] = useState([]);
-  const [data, setData] = useState([]);
+  const data = useSelector((state) => state);
+  console.log(data, "use selector");
 
   // Reset selected customers when customers change
   useEffect(
@@ -42,23 +44,10 @@ export const CustomerListTable = (props) => {
       if (selectedCustomers.length) {
         setSelectedCustomers([]);
       }
-      _getUsersForCompany();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [customers]
   );
-
-  const _getUsersForCompany = async () => {
-    await axiosClient
-      .get("User/getUsersForCompany?companyId=1", {})
-      .then((res) => {
-        setData(res.data);
-        console.log(res, "Api response");
-      })
-      .catch((err) => {
-        console.log(err, "error");
-      });
-  };
 
   const handleSelectAllCustomers = (event) => {
     setSelectedCustomers(
@@ -79,7 +68,7 @@ export const CustomerListTable = (props) => {
   const enableBulkActions = selectedCustomers.length > 0;
   const selectedSomeCustomers =
     selectedCustomers.length > 0 && selectedCustomers.length < customers.length;
-  const selectedAllCustomers = selectedCustomers.length === customers.length;
+  const selectedAllCustomers = selectedCustomers.length === customers?.length;
 
   return (
     <div {...other}>
@@ -125,7 +114,7 @@ export const CustomerListTable = (props) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {customers.map((customer) => {
+            {customers?.map((customer) => {
               const isCustomerSelected = selectedCustomers.includes(
                 customer.id
               );
@@ -168,7 +157,7 @@ export const CustomerListTable = (props) => {
                       <Box sx={{ ml: 1 }}>
                         <NextLink href="/dashboard/customers/1" passHref>
                           <Link color="inherit" variant="subtitle2">
-                            {customer.name}
+                            {`${customer.firstName} ${customer.lastname}`}
                           </Link>
                         </NextLink>
                         <Typography color="textSecondary" variant="body2">
@@ -178,11 +167,15 @@ export const CustomerListTable = (props) => {
                     </Box>
                   </TableCell>
                   <TableCell>
-                    {`${customer.city}, ${customer.state}, ${customer.country}`}
+                    Salt Lake City, Utah, USA
+                    {/* {`${customer.city}, ${customer.state}, ${customer.country}`} */}
                   </TableCell>
-                  <TableCell>{customer.totalOrders}</TableCell>
+                  <TableCell>
+                    {customer.totalOrders ? customer.totalOrders : 0}
+                  </TableCell>
                   <TableCell>
                     <Typography color="success.main" variant="subtitle2">
+                      $
                       {numeral(customer.totalAmountSpent).format(
                         `${customer.currency}0,0.00`
                       )}

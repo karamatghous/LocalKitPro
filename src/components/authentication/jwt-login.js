@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { useRouter } from "next/router";
 import * as Yup from "yup";
@@ -12,10 +12,11 @@ export const JWTLogin = (props) => {
   const isMounted = useMounted();
   const router = useRouter();
   const { login } = useAuth();
+  const [error, setError] = useState(false);
   const formik = useFormik({
     initialValues: {
-      email: "demo@melsoft.co.za",
-      password: "Password123!",
+      email: "",
+      password: "",
       submit: null,
     },
     validationSchema: Yup.object({
@@ -28,7 +29,9 @@ export const JWTLogin = (props) => {
     onSubmit: async (values, helpers) => {
       // console.log(values.email, values.password, "email password");
       try {
-        await login(values.email, values.password);
+        const res = await login(values.email, values.password);
+
+        setError(!res);
 
         if (isMounted()) {
           const returnUrl = router.query.returnUrl || "/dashboard";
@@ -90,10 +93,16 @@ export const JWTLogin = (props) => {
           </Button>
         </Box>
         <Box sx={{ mt: 2 }}>
-          <Alert severity="info">
+          <Alert severity={error ? "error" : "info"}>
+            {error ?
             <div>
-              Use <b>demo@melsoft.co.za</b> and password <b>Password123!</b>
-            </div>
+              <b> User not found </b> please check your email and password
+            </div>:
+            <div>
+            Use <b>demo@melsoft.co.za</b> and password <b>Password123!</b>
+          </div>
+          }
+            
           </Alert>
         </Box>
       </form>

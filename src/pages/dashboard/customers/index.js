@@ -23,6 +23,7 @@ import { Plus as PlusIcon } from "../../../icons/plus";
 import { Search as SearchIcon } from "../../../icons/search";
 import { Upload as UploadIcon } from "../../../icons/upload";
 import { gtm } from "../../../lib/gtm";
+import { axiosClient } from "../../../api/config";
 
 const tabs = [
   {
@@ -63,7 +64,7 @@ const sortOptions = [
 ];
 
 const applyFilters = (customers, filters) =>
-  customers.filter((customer) => {
+  customers?.filter((customer) => {
     if (filters.query) {
       let queryMatched = false;
       const properties = ["email", "name"];
@@ -119,9 +120,9 @@ const getComparator = (sortDir, sortBy) =>
 const applySort = (customers, sort) => {
   const [sortBy, sortDir] = sort.split("|");
   const comparator = getComparator(sortDir, sortBy);
-  const stabilizedThis = customers.map((el, index) => [el, index]);
+  const stabilizedThis = customers?.map((el, index) => [el, index]);
 
-  stabilizedThis.sort((a, b) => {
+  stabilizedThis?.sort((a, b) => {
     const newOrder = comparator(a[0], b[0]);
 
     if (newOrder !== 0) {
@@ -131,11 +132,11 @@ const applySort = (customers, sort) => {
     return a[1] - b[1];
   });
 
-  return stabilizedThis.map((el) => el[0]);
+  return stabilizedThis?.map((el) => el[0]);
 };
 
 const applyPagination = (customers, page, rowsPerPage) =>
-  customers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
+  customers?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
 const CustomerList = () => {
   const isMounted = useMounted();
@@ -156,10 +157,22 @@ const CustomerList = () => {
     gtm.push({ event: "page_view" });
   }, []);
 
+  const getUsersForCompany = async () => {
+    let response =[]
+    await axiosClient
+      .get("User/getUsersForCompany?companyId=1", {})
+      .then((res) => {
+        response = res.data;
+      })
+      .catch((err) => {
+        console.log(err, "error");
+      });
+    return response;
+  };
+
   const getCustomers = useCallback(async () => {
     try {
-      const data = await customerApi.getCustomers();
-
+      const data = await getUsersForCompany();
       if (isMounted()) {
         setCustomers(data);
       }
@@ -329,7 +342,7 @@ const CustomerList = () => {
             </Box>
             <CustomerListTable
               customers={paginatedCustomers}
-              customersCount={filteredCustomers.length}
+              customersCount={filteredCustomers?.length}
               onPageChange={handlePageChange}
               onRowsPerPageChange={handleRowsPerPageChange}
               rowsPerPage={rowsPerPage}
